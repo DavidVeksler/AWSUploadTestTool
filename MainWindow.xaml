@@ -1,0 +1,86 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:AWSUploadTestTool" x:Class="AWSUploadTestTool.MainWindow"
+        Title="Amazon S3 Upload Test Tool" Height="668.987" Width="578.164">
+    <Window.DataContext>
+        <local:TestDataContext/>
+    </Window.DataContext>
+    <Grid>
+        <DockPanel VerticalAlignment="Stretch" 
+        Height="Auto">
+            <TabControl HorizontalAlignment="Stretch"  DockPanel.Dock="Top" VerticalAlignment="Stretch" 
+        		VerticalContentAlignment="Stretch">
+                <TabItem Header="Test S3">
+                    <Grid Background="#FFE5E5E5">
+                        <GroupBox Header="Amazon S3 Credentials" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Height="125" Width="540">
+                            <Grid>
+
+                                <Label Content="Account: " Margin="10,10,460,63" />
+                                <TextBox Text="{Binding Account}" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Margin="73,10,0,63" Width="190"  />
+                                <Label Content="Key" Margin="268,10,224,63" />
+                                <TextBox Text="{Binding Key}" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Margin="309,10,0,63" Width="209"  />
+                                <Label Content="Bucket Name" Width="85" Margin="15,45,428,28" RenderTransformOrigin="0.882,0.7" />
+                                <TextBox Text="{Binding BucketName}" HorizontalAlignment="Left" TextWrapping="Wrap" Margin="105,45,0,10" Width="413"  />
+                            </Grid>
+                            <!--<WrapPanel  HorizontalAlignment="Stretch">
+                                
+
+
+                            </WrapPanel>-->
+
+
+                        </GroupBox>
+                        <GroupBox Header="Test Parameters" HorizontalAlignment="Left" Margin="10,140,0,0" VerticalAlignment="Top" Height="110" Width="540">
+                            <Grid>
+                                <Label Content="File:" Margin="10,10,412,99" />
+                                <TextBox Text="{Binding FileName}" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="319" Margin="136,10,0,0"/>
+                                <Button x:Name="btnPickFile" Content="..." HorizontalAlignment="Left" Margin="460,12,0,0" VerticalAlignment="Top" Width="44" Height="30" Click="btnPickFile_Click"/>
+                                <Label VerticalAlignment="Top"  Content="Iterations:" Margin="10,47,412,0" />
+                                <Slider Value="{Binding Iterations}" HorizontalAlignment="Left" Margin="136,57,0,0" VerticalAlignment="Top" Width="248" Maximum="10000" Minimum="1"/>
+                                <Label VerticalAlignment="Top"  Content="File:" Margin="10,12,412,0" />
+                                <TextBox Text="{Binding Iterations}" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" Margin="402,53,0,0"/>
+                            </Grid>
+
+
+                        </GroupBox>
+                        <GroupBox Header="Statistics" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" Height="221" Width="540">
+                            <Grid Margin="0,0,0,-51">
+                                <Label Content="Average Upload Time" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" FontSize="25"/>
+                                <Label Content="{Binding AverageUploadTime}" HorizontalAlignment="Left" Margin="326,58,0,0" VerticalAlignment="Top" FontSize="25" BorderBrush="#FF321E1E" BorderThickness="1" Width="176"/>
+                                <Label Content="Errors" HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top" FontSize="25"/>
+                                <Label Content="{Binding Errors}" HorizontalAlignment="Left" Margin="326,151,0,0" VerticalAlignment="Top" FontSize="25" BorderBrush="#FF321E1E" BorderThickness="1" Width="176"/>
+                                <Label Content="Number of Uploads" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="25"/>
+                                <Label Content="{Binding CompletedIterations}" HorizontalAlignment="Left" Margin="326,10,0,0" VerticalAlignment="Top" FontSize="25" BorderBrush="#FF321E1E" BorderThickness="1" Width="176"/>
+
+                                <Label VerticalAlignment="Top"  Content="Test Duration" Margin="10,110,290,0" FontSize="25" />
+                                <Label VerticalAlignment="Top"  BorderBrush="#FF321E1E" Margin="326,108,26,0" FontSize="25" Height="41" BorderThickness="1"  Content="{Binding TotalDuration}" />
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Header="Controls" HorizontalAlignment="Left" Margin="10,492,0,0" VerticalAlignment="Top" Height="105" Width="540">
+                            <DockPanel>
+                                <Button x:Name="btnStart" Background="#FF8AC18A" Content="Start" HorizontalAlignment="Left" Height="57" VerticalAlignment="Top" Width="257" Margin="10,18,0,0" FontSize="40" IsDefault="True" Cursor="AppStarting" Click="btnStart_Click"/>
+                                <Button x:Name="btnStop" Background="#FFDAA4A4" Content="Stop" HorizontalAlignment="Left" Height="57" VerticalAlignment="Top" Width="242" Margin="10,18,0,0" FontSize="40" IsCancel="True" Cursor="No" IsEnabled="{Binding TestInProgress }" Click="btnStop_Click"/>
+
+                            </DockPanel>
+
+                        </GroupBox>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Log">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="37*"/>
+                            <ColumnDefinition Width="112*"/>
+                        </Grid.ColumnDefinitions>
+                        <DockPanel HorizontalAlignment="Left" Height="100" LastChildFill="False" Margin="27.38,186,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1"/>
+                        <ListBox Name="log" ItemsSource="{Binding Log, Mode=TwoWay}" HorizontalAlignment="Stretch"  Height="552" Margin="10,10,20,45" VerticalAlignment="Stretch" Grid.ColumnSpan="2" SelectionMode="Extended" PreviewMouseDoubleClick="Log_OnPreviewMouseDoubleClick" />
+                    </Grid>
+                </TabItem>
+            </TabControl>
+
+
+
+        </DockPanel>
+    </Grid>
+</Window>
