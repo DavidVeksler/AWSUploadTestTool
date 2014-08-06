@@ -1,4 +1,5 @@
-AWSUploadTestTool
+Amazon Web Services S3 Upload Performance and Reliability Test Tool
+
 =================
 
 An app created to stress-test the speed and reliability of uploads to Amazon S3.  
