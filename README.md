@@ -8,4 +8,4 @@ An app created to stress-test the speed and reliability of uploads to Amazon S3.
 You can select 1-10,000 uploads of the same file.
 
 
-![Screenshot](http://automagical.rationalmind.net/files/2013/04/TestTool.png)
+![Screenshot](https://github.com/DavidVeksler/AWSUploadTestTool/blob/master/screenshot.png?raw=true)
