@@ -38,8 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AWSSDK">
-      <HintPath>..\packages\AWSSDK.1.5.16.0\lib\AWSSDK.dll</HintPath>
+    <Reference Include="AWSSDK, Version=1.5.61.1, Culture=neutral, PublicKeyToken=9f476d3089b52be3">
+      <HintPath>..\packages\AWSSDK.1.5.61.1\lib\AWSSDK.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CompilerServices.AsyncTargetingPack.Net4, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
